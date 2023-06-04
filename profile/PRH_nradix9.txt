@@ -1,0 +1,6 @@
+[INFO ] Creating relation R with size = 97.656 MiB, #tuples = 12800000 : OK 
+[INFO ] Creating relation S with size = 97.656 MiB, #tuples = 12800000 : OK 
+[INFO ] Running join algorithm PRH ...
+RUNTIME TOTAL: 4814910034, BUILD: 4814909866, PART (cycles): 2732812464
+TOTAL-TIME-USECS: 2298864.0000, TOTAL-TUPLES: 12800000, CYCLES-PER-TUPLE: 376.1648
+[INFO ] Results = 12800000. DONE.
