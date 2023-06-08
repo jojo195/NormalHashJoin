@@ -302,6 +302,7 @@ static struct algo_t algos [] =
       {"PRHO", PRHO},
       {"NPO", NPO},
       {"NPO_st", NPO_st}, /* NPO single threaded */
+      {"GPRH", GPRH},
       {{0}, 0}
   };
 
@@ -360,7 +361,7 @@ main(int argc, char ** argv)
     
     /* create relation R */
     fprintf(stdout,
-            "[INFO ] %s relation R with size = %.3lf MiB, #tuples = %llu : ",
+            "[INFO ] %s relation R with size = %.3lf MiB, #tuples = %lu : ",
             (cmd_params.loadfileS != NULL)?("Loading"):("Creating"),
             (double) sizeof(tuple_t) * cmd_params.r_size/1024.0/1024.0,
             cmd_params.r_size);
@@ -392,7 +393,7 @@ main(int argc, char ** argv)
 
     /* create relation S */
     fprintf(stdout,
-            "[INFO ] %s relation S with size = %.3lf MiB, #tuples = %lld : ",
+            "[INFO ] %s relation S with size = %.3lf MiB, #tuples = %ld : ",
             (cmd_params.loadfileS != NULL)?("Loading"):("Creating"),
             (double) sizeof(tuple_t) * cmd_params.s_size/1024.0/1024.0,
             cmd_params.s_size);
@@ -435,7 +436,7 @@ main(int argc, char ** argv)
 
     results = cmd_params.algo->joinAlgo(&relR, &relS, cmd_params.nthreads);
 
-    printf("[INFO ] Results = %llu. DONE.\n", results->totalresults);
+    printf("[INFO ] Results = %lu. DONE.\n", results->totalresults);
 
 #if (defined(PERSIST_RELATIONS) && defined(JOIN_RESULT_MATERIALIZE))
     printf("[INFO ] Persisting the join result to \"Out.tbl\" ...\n");

@@ -4,6 +4,9 @@
         "pthread.h": "c",
         "config.h": "c",
         "tuple_buffer.h": "c",
-        "exception": "c"
+        "exception": "c",
+        "generator.h": "c",
+        "perf_counters.h": "c",
+        "parallel_radix_join.h": "c"
     }
 }

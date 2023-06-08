@@ -81,4 +81,10 @@ PRH(relation_t * relR, relation_t * relS, int nthreads);
 result_t *
 PRHO(relation_t * relR, relation_t * relS, int nthreads);
 
+/**
+ * GPU accelerated hash join
+*/
+result_t *
+GPRH(relation_t * relR, relation_t * relS, int nthreads);
+
 #endif /* PARALLEL_RADIX_JOIN_H */

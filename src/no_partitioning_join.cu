@@ -339,11 +339,11 @@ print_timing(uint64_t total, uint64_t build, uint64_t part,
     double cyclestuple = total;
     cyclestuple /= numtuples;
     fprintf(stdout, "RUNTIME TOTAL, BUILD, PART (cycles): \n");
-    fprintf(stderr, "%llu \t %llu \t %llu ", 
+    fprintf(stderr, "%lu \t %lu \t %lu ", 
             total, build, part);
     fprintf(stdout, "\n");
     fprintf(stdout, "TOTAL-TIME-USECS, TOTAL-TUPLES, CYCLES-PER-TUPLE: \n");
-    fprintf(stdout, "%.4lf \t %llu \t ", diff_usec, result);
+    fprintf(stdout, "%.4lf \t %lu \t ", diff_usec, result);
     fflush(stdout);
     fprintf(stderr, "%.4lf ", cyclestuple);
     fflush(stderr);

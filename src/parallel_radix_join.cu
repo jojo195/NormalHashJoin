@@ -28,7 +28,7 @@
 #ifdef PERF_COUNTERS
 #include "perf_counters.h"      /* PCM_x */
 #endif
-
+#include "gpu_radix_join.h"
 #include "barrier.h"            /* pthread_barrier_* */
 #include "generator.h"          /* numa_localize() */
 
@@ -1614,6 +1614,15 @@ PRH(relation_t * relR, relation_t * relS, int nthreads)
     return join_init_run(relR, relS, histogram_join, nthreads);
 }
 
+/**
+ * GPU accelerated hash join
+*/
+result_t *
+GPRH(relation_t * relR, relation_t * relS, int nthreads)
+{
+    return gpu_join(relR, relS, nthreads);
+}
+
 /** \copydoc PRHO */
 result_t *
 PRHO(relation_t * relR, relation_t * relS, int nthreads)
@@ -1715,7 +1724,7 @@ RJ(relation_t * relR, relation_t * relS, int nthreads)
         uint32_t idx = (relS->tuples[i].key) & ((1<<NUM_RADIX_BITS)-1);
         S_count_per_cluster[idx] ++;
     }
-
+    
 #ifdef JOIN_RESULT_MATERIALIZE
     chainedtuplebuffer_t * chainedbuf = chainedtuplebuffer_init();
 #else
